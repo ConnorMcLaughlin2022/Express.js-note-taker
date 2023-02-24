@@ -42,15 +42,22 @@ res.json(newNote)
 
 
 
-router.delete('/notes', (req,res) =>{
-    notes.Delete({
-        where: {
-            id: req.params.id
-        }
-    })
-    .then((deletedNote) => {
-      res.json(deletedNote);
-    })
-    .catch((err) => res.json(err));
-})
+router.delete('/notes/:id', (req, res) => {
+// make sure the note is in db.json file
+for( let i = 0; i < notes.length; i++) {
+    console.log(notes[i].id)
+    if (notes[i].id === req.params.id) {
+        notes.splice(i, 1)
+    }
+} 
+// map over the file
+// remove specific note
+// rewrite file without note
+fs.writeFileSync('db/db.json', JSON.stringify(notes))
+res.json(notes)
+  });
+  
 module.exports = router
+// let newObj = {text:'WBHRE', id:'huf2f'}
+
+// console.log(newObj.text)
