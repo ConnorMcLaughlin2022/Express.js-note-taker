@@ -1,7 +1,8 @@
 # Express.js-note-taker #README:
 
     
-    image:
+    image:![Screenshot 2023-02-26 at 6 18 20 PM](https://user-images.githubusercontent.com/116329927/221456705-232bc9bc-7633-46b2-b110-cb648f11a17e.png)
+
     
     
 ## Description
