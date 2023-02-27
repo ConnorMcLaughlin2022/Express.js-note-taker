@@ -17,17 +17,17 @@ router.get('/notes', (req,res)=>{
     })
 })
 
-router.get('/notes', (req,res) =>{
-notes.findOne(
-    {
-        where:{
-            id: req.params.id
-        },
-    }
-).then((noteData) => {
-    res.json(noteData);
-  });
-});
+// router.get('/api/notes', (req,res) =>{
+// notes.findOne(
+//     {
+//         where:{
+//             id: req.params.id
+//         },
+//     }
+// ).then((noteData) => {
+//     res.json(noteData);
+//   });
+// });
 
 router.post('/notes', (req,res)=>{
     let newNote = {
@@ -37,7 +37,7 @@ router.post('/notes', (req,res)=>{
     }
     notes.push(newNote)
 fs.writeFileSync('db/db.json', JSON.stringify(notes))
-res.json(newNote)
+res.json(notes)
 })
 
 
@@ -50,9 +50,7 @@ for( let i = 0; i < notes.length; i++) {
         notes.splice(i, 1)
     }
 } 
-// map over the file
-// remove specific note
-// rewrite file without note
+
 fs.writeFileSync('db/db.json', JSON.stringify(notes))
 res.json(notes)
   });
